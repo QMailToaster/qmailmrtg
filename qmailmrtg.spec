@@ -48,13 +48,11 @@ gcc %{optflags} -s -O qmailmrtg7.c -o qmailmrtg
 %install
 #-------------------------------------------------------------------
 rm -rf %{buildroot}
-install -d                               %{buildroot}%{_sysconfdir}/cron.d
-install -Dp qmailmrtg                    %{buildroot}%{_bindir}/qmailmrtg
-install -Dp %{_sourcedir}/qmailmrtg.cfg  %{buildroot}%{mrtgdir}/qmailmrtg.cfg
-install -Dp %{_sourcedir}/qmailmrtg.module \
-            %{buildroot}%{basedir}/include/qmailmrtg.module
-install -Dp %{_sourcedir}/qmailmrtg.index.php \
-            %{buildroot}%{basedir}/htdocs/mrtg/index.php
+install -d              %{buildroot}%{_sysconfdir}/cron.d
+install -Dp qmailmrtg   %{buildroot}%{_bindir}/qmailmrtg
+install -Dp %{SOURCE1}  %{buildroot}%{mrtgdir}/qmailmrtg.cfg
+install -Dp %{SOURCE2}  %{buildroot}%{basedir}/htdocs/mrtg/index.php
+install -Dp %{SOURCE3}  %{buildroot}%{basedir}/include/qmailmrtg.module
 
 #-------------------------------------------------------------------
 %clean
