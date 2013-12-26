@@ -63,12 +63,10 @@ rm -rf %{buildroot}
 %post
 #-------------------------------------------------------------------
 # Setup mrtg
-# shubes 11/16/2013 - I've no idea why this is repeated 4 times
+# shubes 11/16/2013 - I've no idea why this was repeated 4 times
+# this probably doesn't really need to be done here at all anywise
 export LANG=C
-%{_bindir}/mrtg %{mrtgdir}/qmailmrtg.cfg 2>&1 > /dev/null
-%{_bindir}/mrtg %{mrtgdir}/qmailmrtg.cfg 2>&1 > /dev/null
-%{_bindir}/mrtg %{mrtgdir}/qmailmrtg.cfg 2>&1 > /dev/null
-%{_bindir}/mrtg %{mrtgdir}/qmailmrtg.cfg 2>&1 > /dev/null
+%{_bindir}/mrtg %{mrtgdir}/qmailmrtg.cfg  >/dev/null 2>&1
 
 #-------------------------------------------------------------------
 # Install cron-job
@@ -80,7 +78,7 @@ mv -f %{crontab}.old %{crontab}
 
 if ! grep '* * * * root env LANG=C %{_bindir}/mrtg %{mrtgdir}/qmailmrtg.cfg' %{crontab} > /dev/null; then
   echo "" >> %{crontab}
-  echo "0-59/5 * * * * root env LANG=C %{_bindir}/mrtg %{mrtgdir}/qmailmrtg.cfg 2>&1 > /dev/null" >> %{crontab}
+  echo "0-59/5 * * * * root env LANG=C %{_bindir}/mrtg %{mrtgdir}/qmailmrtg.cfg > /dev/null 2>&1" >> %{crontab}
 fi
 
 #-------------------------------------------------------------------
