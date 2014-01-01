@@ -1,22 +1,24 @@
-Name:		qmailmrtg
-Summary:	Mrtg for qmail-toaster
-Version:	4.2
-Release:	0%{?dist}
-License:	GPL
-Group:		Networking/Other
-URL:		http://www.inter7.com/index.php?page=qmailmrtg7
-Source0:	http://www.inter7.com/qmailmrtg7/qmailmrtg7-%{version}.tar.gz
-Source1:	qmailmrtg.cfg
-Source2:	qmailmrtg.index.php
-Source3:	qmailmrtg.module
-Requires:	control-panel
-Requires:	vixie-cron
-Requires:	crontabs
-Requires:	httpd >= 2.2.2
-Requires:	php >= 5.1.6
-Requires:	mrtg
-Obsoletes:	qmailmrtg-toaster
-BuildRoot:      %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}
+Name:      qmailmrtg
+Summary:   Mrtg for qmail-toaster
+Version:   4.2
+Release:   0%{?dist}
+License:   GPL
+Group:     Networking/Other
+Vendor:    QmailToaster
+Packager:  Eric Shubert <qmt-build@datamatters.us>
+URL:       http://www.inter7.com/index.php?page=qmailmrtg7
+Source0:   http://www.inter7.com/qmailmrtg7/qmailmrtg7-%{version}.tar.gz
+Source1:   qmailmrtg.cfg
+Source2:   qmailmrtg.index.php
+Source3:   qmailmrtg.module
+Requires:  control-panel
+Requires:  vixie-cron
+Requires:  crontabs
+Requires:  httpd >= 2.2.2
+Requires:  php >= 5.1.6
+Requires:  mrtg
+Obsoletes: qmailmrtg-toaster
+BuildRoot: %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}
 
 %define apacheuser     apache
 %define apachegroup    apache
